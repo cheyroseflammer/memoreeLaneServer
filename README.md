@@ -60,7 +60,7 @@ POST `/posts`
 }
 ```
 
-PUT `/posts`
+PUT `/posts/:post_id`
 
 ```js
 {
@@ -78,7 +78,7 @@ PUT `/posts`
 }
 ```
 
-DELETE `/posts`
+DELETE `/posts/post_id`
 
 ```js
 {

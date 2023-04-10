@@ -57,7 +57,7 @@ async function create(req, res) {
 async function update(req, res) {
   const updatedPost = {
     ...req.body.data,
-    post_id: res.locals.post.post_id,
+    post_id: req.params.postId,
   };
   const data = await postsService.update(updatedPost);
   res.json({ data });
@@ -73,11 +73,6 @@ module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(postExists), read],
   create: [asyncErrorBoundary(create)],
-  update: [
-    asyncErrorBoundary(postExists),
-    hasOnlyValidProperties,
-    hasRequiredProperties,
-    asyncErrorBoundary(update),
-  ],
+  update: [hasOnlyValidProperties, hasRequiredProperties, asyncErrorBoundary(update)],
   delete: [asyncErrorBoundary(postExists), asyncErrorBoundary(destroy)],
 };
