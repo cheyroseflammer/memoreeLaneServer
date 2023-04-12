@@ -31,8 +31,9 @@ function destroy(post_id) {
 
 function like(likedPost) {
   return knex('posts')
+    .select('*')
     .where({ post_id: likedPost.post_id })
-    .update({ likeCount: knex.raw('?? + 1', ['likeCount']) })
+    .update({ likeCount: knex.raw('?? + 1', ['likeCount']) }, '*')
     .then((likedRecords) => likedRecords[0]);
 }
 

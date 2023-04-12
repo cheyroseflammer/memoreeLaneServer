@@ -70,8 +70,7 @@ async function like(req, res) {
     post_id: req.params.postId,
   };
   const data = await postsService.like(likedPost);
-  res.json({ data });
-  console.log(req.body);
+  res.json(data);
 }
 
 async function destroy(req, res) {
