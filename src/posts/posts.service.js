@@ -29,10 +29,18 @@ function destroy(post_id) {
   return knex('posts').where({ post_id }).del();
 }
 
+function like(likedPost) {
+  return knex('posts')
+    .where({ post_id: likedPost.post_id })
+    .update({ likeCount: knex.raw('?? + 1', ['likeCount']) })
+    .then((likedRecords) => likedRecords[0]);
+}
+
 module.exports = {
   list,
   create,
   read,
   update,
   delete: destroy,
+  like,
 };

@@ -60,8 +60,18 @@ async function update(req, res) {
     post_id: req.params.postId,
   };
   const data = await postsService.update(updatedPost);
-  console.log(updatedPost);
   res.json({ data });
+  console.log(data);
+}
+
+async function like(req, res) {
+  const likedPost = {
+    ...req.body,
+    post_id: req.params.postId,
+  };
+  const data = await postsService.like(likedPost);
+  res.json({ data });
+  console.log(req.body);
 }
 
 async function destroy(req, res) {
@@ -76,4 +86,5 @@ module.exports = {
   create: [asyncErrorBoundary(create)],
   update: [asyncErrorBoundary(update), hasOnlyValidProperties, hasProperties],
   delete: [asyncErrorBoundary(postExists), asyncErrorBoundary(destroy)],
+  like,
 };

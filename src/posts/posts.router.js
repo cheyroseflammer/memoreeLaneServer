@@ -6,4 +6,6 @@ router.route('/').get(controller.list).post(controller.create).all(methodNotAllo
 
 router.route('/:postId').put(controller.update).delete(controller.delete).all(methodNotAllowed);
 
+router.route('/:postId/likePost').patch(controller.like).all(methodNotAllowed);
+
 module.exports = router;
