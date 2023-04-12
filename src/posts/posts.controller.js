@@ -50,7 +50,7 @@ async function create(req, res) {
     ...req.body,
   };
   const data = await postsService.create(post);
-  res.json({ data });
+  res.json(data);
   console.log(post, data);
 }
 
