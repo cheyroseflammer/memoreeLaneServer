@@ -10,11 +10,11 @@ Clone app: `https://github.com/cheyroseflammer/memoreeLaneServer.git`
 
 Install dependencies: `npm install`
 
-Create database: `psql -U [username]` => `CREATE DATABASE memoreeLaneDb`
+Create database: `psql -U [username]` => `CREATE DATABASE memoreeLaneDb;` => `\q`
 
 Run most recent migration file: `npx knex migrate:latest`
 
-Seed database: `npx knex seed: run`
+Seed database: `npx knex seed:run`
 
 Tests: `npm test`
 
